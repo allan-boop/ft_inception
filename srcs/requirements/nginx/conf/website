@@ -1,0 +1,23 @@
+	server {
+		#SSL/TLS Configuration
+		listen 2020 ssl;
+		listen [::]:2020 ssl;
+		ssl_protocols TLSv1.2 TLSv1.3;
+		ssl_certificate /etc/nginx/ssl/inception.crt;
+		ssl_certificate_key /etc/nginx/ssl/inception.key;
+		server_tokens off;
+
+		#root and index and server_name
+		root /var/www/html;
+		index index.php index.html index.htm;
+		server_name localhost;
+		location / {
+			try_files $uri $uri/ /index.php?$query_string;
+		}
+		location ~ \.php$ {
+			include fastcgi_params;
+			fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+			fastcgi_index index.php;
+			fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		}
+	}
