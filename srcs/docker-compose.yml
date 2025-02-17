@@ -13,7 +13,7 @@ services:
 
   mariadb:
     container_name: mariadb
-    # build: ./requirements/mariadb
+    build: ./requirements/mariadb
     image: mariadb
     ports:
       - "3306:3306"

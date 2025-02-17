@@ -16,13 +16,13 @@ EXPOSE 3306
 
 # Définition d'un volume pour persister les données
 VOLUME /var/lib/mysql
-
+RUN mkdir -p /docker-entrypoint-initdb.d/
 # Copier les fichiers de configuration
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 #ligne de merde qui fonction pas
 COPY conf/init.sql /docker-entrypoint-initdb.d/init.sql
 COPY conf/entrypoint.sh /usr/local/bin/entrypoint.sh
-
+RUN chmod 644 /docker-entrypoint-initdb.d/init.sql
 # Rendre le script d'entrée exécutable
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
@@ -30,4 +30,4 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # Lancer le serveur MariaDB
-CMD ["mysqld"]
+CMD ["mysqld", "--init-file=/docker-entrypoint-initdb.d/init.sql"]
