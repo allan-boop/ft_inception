@@ -10,7 +10,7 @@
 		#root and index and server_name
 		root /var/www/html;
 		index index.php index.html index.htm;
-		server_name localhost;
+		server_name localhost ahans.42.fr;
 		location / {
 			try_files $uri $uri/ /index.php?$query_string;
 		}

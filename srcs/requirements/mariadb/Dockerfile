@@ -30,4 +30,4 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # Lancer le serveur MariaDB
-CMD ["mysqld", "--init-file=/docker-entrypoint-initdb.d/init.sql"]
+CMD ["mysqld", "--init-file=/docker-entrypoint.sh"]

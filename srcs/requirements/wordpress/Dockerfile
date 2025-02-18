@@ -38,5 +38,6 @@ ENTRYPOINT ["/usr/local/bin/create_wordpress.sh"]
 #We expose the 9000 port
 EXPOSE 9000
 
+
 #Launch PHP FPM in foreground and ignore deamonize from conf file (-F)
 CMD ["php-fpm7.4", "-F"]

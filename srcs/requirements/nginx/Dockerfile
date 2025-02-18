@@ -6,7 +6,7 @@ RUN apt update && apt upgrade -y && \
     mkdir -p /etc/nginx/ssl /var/run/nginx && \
     openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt \
     -keyout /etc/nginx/ssl/inception.key \
-    -subj "/C=FR/ST=ALS/L=Paris/O=42/OU=42/CN=ahans.42.fr/UID=ahans" && \
+    -subj "/C=FR/ST=ALS/L=Mulhouse/O=42/OU=42/CN=ahans.42.fr/UID=ahans" && \
     chmod 755 /var/www/html && \
     chown -R www-data:www-data /var/www/html
 
